@@ -30,7 +30,7 @@ body{
     border: none;
     font-size: 6vh;
     color: #931F1D ;
-    /* background-color: #fff; */
+    background-color: #fff;
 }
 #resetbtn{
     padding:10px;
