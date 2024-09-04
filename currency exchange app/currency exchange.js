@@ -5,6 +5,8 @@ const btn = document.querySelector("form button");
 const fromCurr = document.querySelector(".from select");
 const toCurr = document.querySelector(".to select");
 const msg = document.querySelector(".msg");
+const swap = document.querySelector("#swap")
+
 
 for (let select of dropdowns) {
   for (currCode in countryList) {
@@ -44,6 +46,16 @@ const updateExchangeRate = async () => {
   msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
 };
 
+const handleSwap = () => {
+  const tempValue = fromCurr.value;
+  fromCurr.value = toCurr.value;
+  toCurr.value = tempValue;
+  
+  updateFlag(fromCurr);
+  updateFlag(toCurr);
+  updateExchangeRate();
+};
+
 const updateFlag = (element) => {
   let currCode = element.value;
   let countryCode = countryList[currCode];
@@ -60,3 +72,9 @@ btn.addEventListener("click", (evt) => {
 window.addEventListener("load", () => {
   updateExchangeRate();
 });
+
+swap.addEventListener("click",()=>{
+  handleSwap()
+})
+
+
